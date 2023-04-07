@@ -1,6 +1,5 @@
-export default function HangmanWord() {
-  const letters = "Habesha"
-
+export default function HangmanWord({reveal = false, guessedLetters, wordToGuess}) {
+  
   return (
     <div
       style={{
@@ -12,11 +11,17 @@ export default function HangmanWord() {
         fontFamily: "monospace",
       }}
     >
-      {letters.split("").map((letter, index) => (
+      {wordToGuess.split("").map((letter, index) => (
         <span style={{ borderBottom: ".1em solid #ddd" }} key={index}>
           <span
             style={{
-              color:"#ddd",
+              color: !guessedLetters.includes(letter) && reveal 
+                     ? 'red'
+                     : '#ddd',
+              visibility: 
+                guessedLetters.includes(letter) || reveal 
+                ? "visible"
+                : "hidden"
             }}
           >
             {letter}
