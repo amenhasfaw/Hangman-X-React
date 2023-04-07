@@ -7,10 +7,16 @@ import HangmanWord from './components/HangmanWord'
 import Keyboard from './components/Keyboard'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div>
+    <div style={{
+      maxWidth: "800px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "2rem",
+      margin: "0 auto",
+      alignItems: "center",
+    }}>
       <HangmanDrawing/>
       <HangmanWord/>
       <Keyboard/>
