@@ -79,6 +79,10 @@ function App() {
       margin: "0 auto",
       alignItems: "center",
     }}>
+        <div style={{fontFamily: 'Lucidatypewriter', fontSize: '1rem', textAlign: 'center', color:'#777'}}>
+          <h1>HANGMAN</h1>
+        </div>
+        
         <div style={{fontSize: "2rem", textAlign: 'center', color:'#ddd'}}>
           {isWinner && "YOU WON : Refresh to play again"}
           {isLoser && "YOU LOST : Refresh to play again"}

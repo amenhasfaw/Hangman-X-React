@@ -35,7 +35,7 @@ export default function Keyboard({disabled, activeLetters,inactiveLetters, addGu
     <div
     style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fit, minmax(50px, 1fr))",
         gap: ".5rem",
     }}>
         {KEYS.map((key) => {
