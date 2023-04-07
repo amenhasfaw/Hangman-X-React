@@ -14,15 +14,15 @@ function App() {
   const [wordToGuess, setWordToGuess] = useState(getWord)
   const [guessedLetters, setGuessedLetters] = useState([])
 
-  const incorrectLetters = () => guessedLetters.filter(
+  const incorrectLetters = guessedLetters.filter(
     letters => !wordToGuess.includes(letters)
   )
 
-  const activeLetters = () => guessedLetters.filter(
-    letter => wordToGuess.includes(letter)
+  const activeLetters = guessedLetters.filter(
+    letters => wordToGuess.includes(letters)
   )
 
-  const isLoser = incorrectLetters >= 6
+  const isLoser = incorrectLetters.length >= 6
   const isWinner = wordToGuess.split('')
                     .every(letter => guessedLetters.includes(letter))
 
@@ -79,7 +79,7 @@ function App() {
       margin: "0 auto",
       alignItems: "center",
     }}>
-        <div style={{fontSize: "2rem", textAlign: 'center'}}>
+        <div style={{fontSize: "2rem", textAlign: 'center', color:'#ddd'}}>
           {isWinner && "YOU WON : Refresh to play again"}
           {isLoser && "YOU LOST : Refresh to play again"}
         </div>

@@ -30,7 +30,7 @@ const KEYS = [
     "z",
   ]
 
-export default function Keyboard() {
+export default function Keyboard({disabled, activeLetters,inactiveLetters, addGuessedLetter}) {
   return (
     <div
     style={{
@@ -39,10 +39,19 @@ export default function Keyboard() {
         gap: ".5rem",
     }}>
         {KEYS.map((key) => {
+            
+            const isActive = activeLetters.includes(key)
+            const isInactive = inactiveLetters.includes(key)
+            
             return (
                 <button
-                className={`${styles.btn}`} 
-                key={key}>
+                key={key}
+                onClick={() => addGuessedLetter(key)}
+                className={`${styles.btn} 
+                            ${isActive ? styles.active : ''}
+                            ${isInactive ? styles.inactive : ''}`} 
+                disabled={isActive || isInactive || disabled}
+                >
                     {key}
                 </button>
             )
