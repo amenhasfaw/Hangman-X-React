@@ -18,6 +18,10 @@ function App() {
     letters => !wordToGuess.includes(letters)
   )
 
+  const activeLetters = () => guessedLetters.filter(
+    letter => wordToGuess.includes(letter)
+  )
+
   const isLoser = incorrectLetters >= 6
   const isWinner = wordToGuess.split('')
                     .every(letter => guessedLetters.includes(letter))
@@ -75,9 +79,27 @@ function App() {
       margin: "0 auto",
       alignItems: "center",
     }}>
-      <HangmanDrawing/>
-      <HangmanWord/>
-      <div style={{ alignSelf: "stretch" }}><Keyboard/></div>
+        <div style={{fontSize: "2rem", textAlign: 'center'}}>
+          {isWinner && "YOU WON : Refresh to play again"}
+          {isLoser && "YOU LOST : Refresh to play again"}
+        </div>
+
+        <HangmanDrawing numberOfGuesses = {incorrectLetters.length}/>
+
+        <HangmanWord
+          reveal = {isLoser}
+          guessedLetters = {guessedLetters}
+          wordToGuess = {wordToGuess}/>
+
+
+        <div style={{ alignSelf: "stretch" }}>
+          <Keyboard
+            disabled = {isLoser || isWinner}
+            activeLetters = {activeLetters}
+            inactiveLetters = {incorrectLetters}
+            addGuessedLetter={addGuessedLetter}
+            />
+        </div>
     </div>
     
   )
