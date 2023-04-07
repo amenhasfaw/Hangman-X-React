@@ -112,7 +112,7 @@ export default function HangmanDrawing({numberOfGuesses}) {
             />
             <div
                 style={{
-                height: "400px",
+                height: "350px",
                 width: "10px",
                 background: "#ddd",
                 marginLeft: "120px",
